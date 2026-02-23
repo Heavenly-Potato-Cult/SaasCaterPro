@@ -1,0 +1,92 @@
+insert data manually 
+
+--------------------------------
+php artisan tinker 
+
+shortcut 
+first eto
+$user = App\Models\User::create([
+    'first_name' => 'John Emman',
+    'last_name' => 'Juaquera',
+    'email' => 'jjohnemman@gmail.com',
+    'role' => 'admin',
+    'mobile' => '09158500364',
+    'password' => bcrypt('Johnemman1'),
+]);
+
+$user = App\Models\User::create([
+    'first_name' => 'Kendrick',
+    'last_name' => 'Serrano',
+    'email' => 'kendrickserrano7@gmail.com',
+    'role' => 'admin',
+    'mobile' => '09154700301',
+    'password' => bcrypt('Kendrick1'),
+]);
+tapos etoo
+$user->update(['email_verified_at' => now()]);
+
+or 
+----------------------------------------
+use App\Models\User
+
+User::create([
+    'first_name' => 'John Emman',
+    'last_name' => 'Juaquera',
+    'email' => 'jjohnemman@gmail.com',
+'role' => 'admin',
+    'mobile' => '09158500364',
+    'password' => bcrypt('Johnemman1')
+]);
+
+FIND SPECIFIC USER ID
+$user = \App\Models\User::find(1);
+$user->update(['email_verified_at' => now()]);
+
+SET ADMIN 
+$user = \App\Models\User::find(1);
+$user->role = 'admin';  
+$user->save();
+
+
+
+CREATE  DATA FOR BOOKINGSETTING USING SEEDER
+php artisan make:seeder BookingSettingSeeder
+
+use Illuminate\Database\Seeder;
+use App\Models\BookingSetting;
+
+class BookingSettingSeeder extends Seeder
+{
+    public function run()
+    {
+        BookingSetting::firstOrCreate([
+            'id' => 1,
+        ], [
+            'service_start_time' => '08:00:00',
+            'service_end_time' => '20:00:00',
+            'events_per_day' => 2,
+            'blocked_dates' => json_encode([]),
+        ]);
+    }
+}
+RUN: php artisan db:seed --class=BookingSettingSeeder
+php artisan db:seed
+php artisan db:seed --class=HeroSectionSeeder
+php artisan db:seed --class=WhyChooseUsSectionSeeder
+php artisan db:seed --class=AboutUsSectionSeeder
+php artisan db:seed --class=FooterSectionSeeder
+php artisan db:seed --class=PrivacyPolicySeeder
+php artisan db:seed --class=PrivacyPolicySeeder
+php artisan db:seed --class=NavbarSettingSeeder
+php artisan db:seed --class=ReviewSectionSettingSeeder
+
+GUIDE IN DEPLOYMENT
+
+GIT PUSH IN VSCODE 
+
+
+//ACCESS SITE 
+on cmd run:
+ssh -p 65002 u982884330@145.223.108.133 (account ntin to)
+password: #uy3J4Uqci2wbW*
+cd  domains/honeydew-rabbit-666270.hostingersite.com/saascater
